@@ -21,8 +21,8 @@ jobs:
           REPO: "yklcs.com"
         with:
           script: |
-            await github.rest.repos.createWorkflowDispatch({
+            await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: process.env.REPO,
-              workflow_id: "build-and-deploy"
+              workflow_id: "build_and_deploy.yml"
             })
