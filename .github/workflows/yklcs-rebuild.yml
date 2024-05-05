@@ -20,6 +20,7 @@ jobs:
         env:
           REPO: "yklcs.com"
         with:
+          github-token: ${{ secrets.PAT }}
           script: |
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
