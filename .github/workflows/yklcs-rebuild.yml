@@ -25,5 +25,6 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: process.env.REPO,
-              workflow_id: "build_and_deploy.yml"
+              workflow_id: "build_and_deploy.yml",
+              ref: "main"
             })
