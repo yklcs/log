@@ -13,10 +13,6 @@ jobs:
   yklcs-rebuild:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - name: Trigger rebuild
         if: always()
         uses: actions/github-script@v7
@@ -28,5 +24,5 @@ jobs:
             await github.rest.repos.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: process.env.REPO,
-              workflow_id: build-and-deploy
+              workflow_id: "build-and-deploy"
             })
