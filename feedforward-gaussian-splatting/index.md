@@ -18,7 +18,7 @@ This means we can use various models to regress 3D Gaussian parameters from imag
 In particular, we can use a neural network as the model, which allows us to regress 3D Gaussians in a single forward pass.
 This is known as _Feedforward Gaussian Splatting_.
 
-![](./diagram.svg)
+<img src="./diagram.svg" width="150" />
 
 The motivation for Feedforward Gaussian Splatting follows from the usual advantages that deep learning has over classical machine learning.
 Using a neural network lets the model to learn priors from large-scale datasets.
@@ -38,7 +38,7 @@ This means the output image contains $HW$ 3D Gaussians.
 pixelSplat[^pixelsplat] focuses on stereoscopic reconstruction. An encoder based on cross-view- and self- attention maps input views to a feature map.
 Each feature of the feature map is used as an input to a variational model which outputs 3D Gaussian parameters.
 
-[^pixelsplat]:_pixelSplat: 3D Gaussian Splats from Image Pairs for Scalable Generalizable 3D Reconstruction_ (Charatan et al., CVPR 2024)
+[^pixelsplat]: _pixelSplat: 3D Gaussian Splats from Image Pairs for Scalable Generalizable 3D Reconstruction_ (Charatan et al., CVPR 2024)
 
 ![](./pixelsplat.png)
 
