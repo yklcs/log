@@ -8,14 +8,14 @@ date: 2024-05-07
 3D Gaussians are an unstructured explicit representation similar to point clouds, yet they can represent volumetric geometry and view-dependent appearances.
 The GPU-accelerated differentiable rendering pipeline renders the 3D Gaussians to an image.
 This rendering pipeline allows for direct optimization of the Gaussian parameters based on image-wise losses.
-Combined, 3D Gaussians, the rendering pipeline, and the optimization step results in a method to represent 3D scenes from 2D image inputs.
 
 [^3dgs]: _3D Gaussian Splatting for Real-Time Radiance Field Rendering_ (Kerbl et al., SIGGRAPH 2023)
 
+Combined, 3D Gaussians, the rendering pipeline, and the optimization step results in a method to represent 3D scenes from 2D image inputs.
 Taking away the optimization step from 3D Gaussian Splatting, we are left with a flexible representation for 3D scenes and a way to render them while allowing for backpropagation.
 
 This means we can use various models to regress 3D Gaussian parameters from image inputs.
-In particular, we can use a neural network as the model, which allows us to regress 3D Gaussians in a single forward pass.
+In particular, we can use a neural network as the model, which allows us to predict 3D Gaussians in a single forward pass.
 This is known as _Feedforward Gaussian Splatting_.
 
 <img src="./diagram.svg" width="150" />
