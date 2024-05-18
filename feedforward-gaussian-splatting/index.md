@@ -67,7 +67,7 @@ Cases with sparse views are especially challenging as the above conditions must 
 ### pixelSplat
 
 [pixelSplat](https://davidcharatan.com/pixelsplat/)[^pixelsplat] shares information between views in the form of epipolar attention[^epipolar] to perform scene reconstruction from stereo inputs.
-Epipolar attention is a form of cross-attention where tokens are sampled along epipolar lines, which allows pixelSplat to share information between views while enforcing epipolar constraints.
+Epipolar attention is a form of cross-attention where tokens are sampled along epipolar lines, which allows tokens to attend to other views while enforcing epipolar constraints.
 To avoid overfitting, variational inference is used to sample 3D Gaussian parameters instead of directly using neural network outputs.
 
 [^pixelsplat]: _pixelSplat: 3D Gaussian Splats from Image Pairs for Scalable Generalizable 3D Reconstruction_ (Charatan et al., CVPR 2024)
@@ -96,7 +96,6 @@ The depth maps are then unprojected to yield 3D Gaussian centers.
 ![](./mvsplat.png)
 
 MVSplat operates on cost volumes which store feature similarities between views.
-This is in constrast to pixelSplat which learns by aggregating absolute features.
 This allows MVSplat to learn feature matching instead of regression, leading to better generalizability and out-of-dataset performance over pixelSplat.
 MVSplat also promises 10× fewer parameters and 2× faster inference speed over pixelSplat.
 
@@ -105,9 +104,6 @@ MVSplat also promises 10× fewer parameters and 2× faster inference speed over 
 </video>
 
 ![](./mvsplat-generalize.png)
-
-
-
 
 ### DUSt3R
 
@@ -125,5 +121,9 @@ In fact, DUSt3R is entirely unconstrained and camera poses and intrinsics are le
 All of the above multi-view reconstruction models use cross-view attention to exchange information between views.
 pixelSplat further augments information sharing between views with epipolar attention and MVSplat with cost volume matching.
 
+This difference in approach between pixelSplat and MVSplat is worth noting.
+pixelSplat works via feature aggregation, performing 3D reconstruction by learning and regressing 3D scenes on their 2D views.
+MVSplat, instead, focuses on similarities between views explicitly represented with cost volumes, performing 2D feature matching to obtain depths.
+
 All methods are also pixel-aligned, i.e. end-to-end locality between pixels and 3D Gaussians is preserved.
-All of the above models output $HWK$ Gaussians.
+Each pixel of the input image corresponds to $n$ Gaussians, resulting in $HWn$ total Gaussians.
