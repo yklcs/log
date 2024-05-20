@@ -19,9 +19,9 @@ This is known as _Feedforward Gaussian Splatting_.
 ```
 
 The motivation for Feedforward Gaussian Splatting follows from the usual advantages that deep learning has over classical machine learning.
-Using a neural network lets the model to learn priors from large-scale datasets.
+The original 3D Gaussian Splatting approach must be optimized per scene.
+In contrast, using a neural network lets the model to learn priors from large-scale datasets.
 This allows Feedforward Gaussian Splatting models to work on sparse views and generalize between scenes.
-The original 3D Gaussian Splatting approach, in contrast, must be optimized per scene.
 
 ## Problem definition
 
@@ -37,7 +37,7 @@ Feedforward Gaussian Splatting can be potentially applied to a number of problem
 - Data
   - Input poses: SfM poses / unposed
 
-We explore a few recent methods in Feedforward Gaussian Splatting below, focusing on the differences between single-view and multi-view reconstruction.
+We explore a few recent methods in generalizable scene reconstruction with Feedforward Gaussian Splatting below, focusing on the differences between single-view and multi-view reconstruction.
 
 ## Single-view
 
